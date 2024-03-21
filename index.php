@@ -27,7 +27,7 @@ foreach($users as $user) {
                       <td>%s</td>
                       <td>
                            <a href='/edit'>Editar</a>
-                           <a href='/getalluser'>Excluir</a>
+                           <a href='domain/user/controller/userController.php?delete=$user->id?>'>Excluir</a>
                       </td>
                    </tr>",
         $user->id, $user->name, $user->email);
@@ -37,18 +37,18 @@ foreach($users as $user) {
 echo "</table>";
 
 echo '<form action="domain/user/controller/userController.php" method="POST">
-        <div class="row">
-            <div class="col-md-3">
+        <div>
+            <div>
                 <label>Nome</label>
-                <input type="text" name="nome" value="" autofocus class="form-control" require />
+                <input type="text" name="nome" value="" autofocus require />
             </div>
-            <div class="col-md-5">
+            <div >
                 <label>Email</label>
-                <input type="text" name="email" value="" class="form-control" require />
+                <input type="text" name="email" value="" require />
             </div>
         </div>
-        <div class="col-md-2">
+        <div>
             <br>
-            <button class="btn btn-primary" type="submit" name="create">Cadastrar</button>
+            <button type="submit" name="create">Cadastrar</button>
         </div>
 </form>';
