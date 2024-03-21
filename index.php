@@ -1,10 +1,13 @@
 <?php
 
 require 'connection.php';
+include_once "domain/user/services/getAllUsers.php";
+include_once "domain/user/services/createUser.php";
 
-$connection = new Connection();
+$getAllUsers = new getAllUsers;
+$createUser = new createUser;
 
-$users = $connection->query("SELECT * FROM users");
+$users = $getAllUsers->run();
 
 echo "<table border='1'>
 
@@ -23,8 +26,8 @@ foreach($users as $user) {
                       <td>%s</td>
                       <td>%s</td>
                       <td>
-                           <a href='#'>Editar</a>
-                           <a href='#'>Excluir</a>
+                           <a href='/edit'>Editar</a>
+                           <a href='/getalluser'>Excluir</a>
                       </td>
                    </tr>",
         $user->id, $user->name, $user->email);
@@ -32,3 +35,20 @@ foreach($users as $user) {
 }
 
 echo "</table>";
+
+echo '<form action="domain/user/controller/userController.php" method="POST">
+        <div class="row">
+            <div class="col-md-3">
+                <label>Nome</label>
+                <input type="text" name="nome" value="" autofocus class="form-control" require />
+            </div>
+            <div class="col-md-5">
+                <label>Email</label>
+                <input type="text" name="email" value="" class="form-control" require />
+            </div>
+        </div>
+        <div class="col-md-2">
+            <br>
+            <button class="btn btn-primary" type="submit" name="create">Cadastrar</button>
+        </div>
+</form>';

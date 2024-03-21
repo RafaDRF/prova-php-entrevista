@@ -21,6 +21,16 @@ class Connection {
         return $this->connection ?: $this->connection = $this->connect();
     }
 
+    public function prepare($sql)
+    {
+        return $this->connection->prepare($sql);
+    }
+
+    public function lastInsertId($sql)
+    {
+        return $this->connection->lastInsertId($sql);
+    }
+
     public function query($query)
     {
         $result      = $this->getConnection()->query($query);
