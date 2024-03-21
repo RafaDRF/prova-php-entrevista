@@ -2,7 +2,7 @@
 
 include_once '../../../connection.php';
 include_once '../repository/userRepository.php';
-include_once '../models/userModel.php';
+include_once '../models/user.php';
 
 class CreateUser {
 

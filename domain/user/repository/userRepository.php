@@ -55,4 +55,10 @@ class UserRespository {
 
          return true;
     }
+
+
+    public function attachColor($userModel, $colorModel)
+    {
+         return true;
+    }
 }
