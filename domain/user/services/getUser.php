@@ -5,7 +5,7 @@ include_once '../repository/userRepository.php';
 class GetUserById {
 
     public function run($id){
-        $userRepository = new UserRespository();
+        $userRepository = new UserRepository();
 
         $user = $userRepository.getUserById($id);
 

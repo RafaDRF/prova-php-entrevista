@@ -1,7 +1,7 @@
 <?php
 include_once '../../../connection.php';
 
-class UserRespository {
+class UserRepository {
 
     private $dbConnection;
 

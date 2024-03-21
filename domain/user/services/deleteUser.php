@@ -5,7 +5,7 @@ include_once '../repository/userRepository.php';
 class DeleteUser {
 
     public function run($id){
-        $userRepository = new UserRespository();
+        $userRepository = new UserRepository();
 
         $userToDelete = $userRepository.getUserById($id);
 

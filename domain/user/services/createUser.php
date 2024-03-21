@@ -6,7 +6,7 @@ include_once '../models/user.php';
 class CreateUser {
 
     public function run($name, $email){
-        $userRepository = new UserRespository();
+        $userRepository = new UserRepository();
 
         $userModel = new UserModel(NULL, $name, $email);
         return $userRepository->createUser($userModel);

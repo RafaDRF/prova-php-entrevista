@@ -6,7 +6,7 @@ include_once '../models/user.php';
 class UpdateUser {
 
     public function run($id, $name, $email){
-        $userRepository = new UserRespository();
+        $userRepository = new UserRepository();
 
         $userToUpdate = $userRepository.getUserById($id);
 
