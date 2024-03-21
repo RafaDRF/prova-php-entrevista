@@ -42,4 +42,17 @@ class UserRespository {
 
          return $this->dbConnection->lastInsertId();
     } // https://www.sqlitetutorial.net/sqlite-php/insert/
+
+    public function updateUser($userModel)
+    {
+        $sql = "UPDATE users SET name = :name, email = :email WHERE id = :id";
+        $stmt = $this->dbConnection->prepare($sql);
+
+        $stmt->bindValue(':id', $userModel->getId());
+        $stmt->bindValue(':name', $userModel->getName());
+        $stmt->bindValue(':email', $userModel->getEmail());
+        $stmt->execute();
+
+         return true;
+    }
 }

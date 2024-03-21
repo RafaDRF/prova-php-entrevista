@@ -10,7 +10,7 @@ class CreateUser {
         $connection = new Connection();
         $userRepository = new UserRespository($connection);
 
-        $userModel = new UserModel($name, $email);
+        $userModel = new UserModel(NULL, $name, $email);
         return $userRepository->createUser($userModel);
     }
 }
