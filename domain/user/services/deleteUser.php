@@ -1,13 +1,11 @@
 <?php
 
-include_once '../../../connection.php';
 include_once '../repository/userRepository.php';
 
 class DeleteUser {
 
     public function run($id){
-        $connection = new Connection();
-        $userRepository = new UserRespository($connection);
+        $userRepository = new UserRespository();
 
         $userToDelete = $userRepository.getUserById($id);
 

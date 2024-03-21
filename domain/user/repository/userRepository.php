@@ -1,12 +1,13 @@
 <?php
+include_once '../../../connection.php';
 
 class UserRespository {
 
     private $dbConnection;
 
-    public function __construct($dbConnection)
+    public function __construct()
     {
-        $this->dbConnection = $dbConnection;
+        $this->dbConnection = new Connection();
     }
 
     public function getAllUsers()
@@ -20,7 +21,7 @@ class UserRespository {
         $stmt = $this->dbConnection->prepare($sql);
         $stmt->bindValue(':id', $id);
 
-        return $stmt->execute();;
+        return $stmt->execute();
     }
 
     public function deleteUserById($id){
