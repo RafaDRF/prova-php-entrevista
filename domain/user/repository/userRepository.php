@@ -16,10 +16,19 @@ class UserRespository {
 
     public function getUserById($id)
     {
-        return true; // user model
+        $sql = 'SELECT * FROM users WHERE id = :id';
+        $stmt = $this->dbConnection->prepare($sql);
+        $stmt->bindValue(':id', $id);
+
+        return $stmt->execute();;
     }
 
     public function deleteUserById($id){
+        $sql = 'DELETE FROM users WHERE id = :id';
+        $stmt = $this->dbConnection->prepare($sql);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+
         return true;
     }
 

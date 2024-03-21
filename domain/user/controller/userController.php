@@ -1,5 +1,6 @@
 <?php
 include_once "../services/createUser.php";
+include_once "../services/deleteUser.php";
 
 //pega todos os dados passado por POST
 
@@ -12,4 +13,9 @@ if(isset($_POST['create'])){
     $createUser->run($d['nome'], $d['email']);
     
     header("Location: ../../../index.php");
-} 
+} elseif ($_POST['delete']) {
+    $deleteUser = new DeleteUser();
+    $deleteUser->run($d['id']);
+
+    header("Location: ../../../index.php");
+}
