@@ -26,9 +26,9 @@ class Connection {
         return $this->connection->prepare($sql);
     }
 
-    public function lastInsertId($sql)
+    public function lastInsertId()
     {
-        return $this->connection->lastInsertId($sql);
+        return $this->connection->lastInsertId();
     }
 
     public function query($query)

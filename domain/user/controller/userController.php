@@ -11,5 +11,5 @@ if(isset($_POST['create'])){
     $createUser = new CreateUser();
     $createUser->run($d['nome'], $d['email']);
     
-    header("Location: ../../in");
+    header("Location: ../../../index.php");
 } 
