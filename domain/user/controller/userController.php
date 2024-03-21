@@ -1,6 +1,6 @@
 <?php
-include_once "../services/createUser.php";
-include_once "../services/deleteUser.php";
+include_once "../usecases/createUser.php";
+include_once "../usecases/deleteUser.php";
 
 $d = filter_input_array(INPUT_POST);
 

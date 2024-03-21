@@ -1,6 +1,7 @@
 <?php
 
-include_once "domain/user/services/getAllUsers.php";
+require 'connection.php';
+include_once "domain/user/usecases/getAllUsers.php";
 
 $getAllUsers = new getAllUsers;
 
