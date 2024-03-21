@@ -2,10 +2,8 @@
 
 require 'connection.php';
 include_once "domain/user/services/getAllUsers.php";
-include_once "domain/user/services/createUser.php";
 
 $getAllUsers = new getAllUsers;
-$createUser = new createUser;
 
 $users = $getAllUsers->run();
 
