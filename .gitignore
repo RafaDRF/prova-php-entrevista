@@ -3,4 +3,4 @@
 .env
 .idea
 
-*.sqlite
+database/db.sqlite
