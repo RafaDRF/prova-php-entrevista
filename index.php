@@ -1,11 +1,13 @@
 <?php
 
-require 'connection.php';
-include_once "domain/user/usecases/getAllUsers.php";
+include_once "src/usecases/getAllUsers.php";
+include_once "src/usecases/getUser.php";
 
-$getAllUsers = new getAllUsers;
+$getAllUsers = new GetAllUsers;
+$getUser = new GetUserById;
 
 $users = $getAllUsers->run();
+$uniqueUser = $getUser->run(1);
 
 echo "<table border='1'>
 
@@ -34,7 +36,9 @@ foreach($users as $user) {
 
 echo "</table>";
 
-echo '<form action="domain/user/controller/userController.php" method="POST">
+echo  sprintf("$uniqueUser->id, $uniqueUser->name, $uniqueUser->email)");
+
+echo '<form action="src/usecases/createUser.php" method="POST">
         <div>
             <div>
                 <label>Nome</label>

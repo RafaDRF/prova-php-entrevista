@@ -1,6 +1,6 @@
 <?php
 
-include_once 'domain/user/repository/userRepository.php';
+require_once 'src/infra/userRepository.php';
 
 class GetAllUsers {
 

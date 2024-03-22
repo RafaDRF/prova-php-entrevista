@@ -1,5 +1,6 @@
 <?php
-include_once '../../../connection.php';
+
+require_once 'connection.php';
 
 class UserRepository {
 
@@ -19,9 +20,10 @@ class UserRepository {
     {
         $sql = 'SELECT * FROM users WHERE id = :id';
         $stmt = $this->dbConnection->prepare($sql);
-        $stmt->bindValue(':id', $id);
-
-        return $stmt->execute();
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        
+        return $stmt->fetchObject();
     }
 
     public function deleteUserById($id){
