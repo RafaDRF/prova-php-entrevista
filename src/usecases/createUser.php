@@ -1,7 +1,7 @@
 <?php
 
-require_once 'src/models/user.php';
-require_once 'src/infra/userRepository.php';
+require_once dirname(__DIR__) . '/models/user.php';
+require_once dirname(__DIR__) . '/infra/userRepository.php';
 
 class CreateUser {
 

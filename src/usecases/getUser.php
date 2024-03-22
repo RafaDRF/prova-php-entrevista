@@ -1,6 +1,6 @@
 <?php
 
-require_once 'src/infra/userRepository.php';
+require_once dirname(__DIR__) . '/infra/userRepository.php';
 
 class GetUserById {
 

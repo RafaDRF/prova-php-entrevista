@@ -1,6 +1,6 @@
 <?php
 
-require_once 'connection.php';
+require_once dirname(__DIR__) .'/../connection.php';
 
 class UserRepository {
 
