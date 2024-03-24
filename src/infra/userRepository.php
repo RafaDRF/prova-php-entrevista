@@ -37,10 +37,10 @@ class UserRepository {
         return new UserModel($r->id, $r->name, $r->email);
     }
 
-    public function deleteUserById($id){
+    public function deleteUser($userModel){
         $sql = 'DELETE FROM users WHERE id = :id';
         $stmt = $this->dbConnection->prepare($sql);
-        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':id', $userModel->getId());
         $stmt->execute();
 
         return true;

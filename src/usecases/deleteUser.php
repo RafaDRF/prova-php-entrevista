@@ -13,7 +13,7 @@ class DeleteUser {
             return false;
         }
 
-        $userRepository->deleteUserById($userToDelete->id);
+        $userRepository->deleteUser($userToDelete);
         return true;
     }
 }
