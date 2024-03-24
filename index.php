@@ -21,16 +21,20 @@ echo "<table border='1'>
 
 foreach($users as $user) {
 
-    echo sprintf("<tr>
+    echo sprintf('<tr>
                       <td>%s</td>
                       <td>%s</td>
                       <td>%s</td>
                       <td>
-                           <a href='/edit'>Editar</a>
-                           <a href='domain/user/controller/userController.php?delete=$user->id?>'>Excluir</a>
+                           <a href="/edit">Editar</a>
+    
+                           <form action="src/usecases/deleteUser.php" method="POST">
+                                <input type="hidden" name="id" value="%s" required/>
+                                <button type="submit">Excluir</button>
+                           </form>
                       </td>
-                   </tr>",
-        $user->id, $user->name, $user->email);
+                   </tr>',
+        $user->id, $user->name, $user->email,$user->id);
 
 }
 
@@ -42,11 +46,11 @@ echo '<form action="src/usecases/createUser.php" method="POST">
         <div>
             <div>
                 <label>Nome</label>
-                <input type="text" name="nome" value="" autofocus require />
+                <input type="text" name="nome" value="" autofocus required />
             </div>
             <div >
                 <label>Email</label>
-                <input type="text" name="email" value="" require />
+                <input type="text" name="email" value="" required />
             </div>
         </div>
         <div>
