@@ -43,7 +43,7 @@ class UserRepository {
         $stmt->bindValue(':email', $userModel->getEmail());
         $stmt->execute();
 
-         return $this->dbConnection->lastInsertId();
+        return $this->dbConnection->lastInsertId();
     } // https://www.sqlitetutorial.net/sqlite-php/insert/
 
     public function updateUser($userModel)
@@ -59,9 +59,17 @@ class UserRepository {
          return true;
     }
 
-
-    public function attachColor($userModel, $colorModel)
+    public function getUserColors($userModel)
     {
          return true;
+    }
+
+    public function attachColor($userId, $colorId)
+    {
+        $sql = 'INSERT INTO user_colors(color_id, user_id) VALUES(:color_id, :user_id)';
+        $stmt = $this->dbConnection->prepare($sql);
+        $stmt->bindValue(':color_id', $colorId);
+        $stmt->bindValue(':user_id', $userId);
+        $stmt->execute();
     }
 }

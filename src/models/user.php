@@ -5,8 +5,12 @@ class UserModel {
     private $id;
     private $name;
     private $email;
+    private $colors = [];
 
     public function __construct($id, $name, $email){
+        // $this->validateName($name);
+        // $this->validateEmail($email);
+        
         $this->id = $id;
         $this->name = $name;
         $this->email = $email;
@@ -22,6 +26,14 @@ class UserModel {
     
     public function getEmail(){
         return $this->email;
+    }
+
+    public function getColors(){
+        return $this->colors;
+    }
+
+    public function attachColor($colorModel){
+        array_push($this->colors, $colorModel);
     }
 
     private function validateName($name){
