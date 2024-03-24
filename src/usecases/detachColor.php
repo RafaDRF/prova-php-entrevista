@@ -16,7 +16,7 @@ class DetachColor {
             return false;
         }
 
-        $userRepository->detachColor($user->id, $colorToAttach->id);
+        $userRepository->detachColor($user, $colorToAttach);
         return true;
     }
 }

@@ -75,21 +75,21 @@ class UserRepository {
          return true;
     }
 
-    public function attachColor($userId, $colorId)
+    public function attachColor($userModel, $colorModel)
     {
         $sql = 'INSERT INTO user_colors(color_id, user_id) VALUES(:color_id, :user_id)';
         $stmt = $this->dbConnection->prepare($sql);
-        $stmt->bindValue(':color_id', $colorId);
-        $stmt->bindValue(':user_id', $userId);
+        $stmt->bindValue(':color_id', $colorModel->getId());
+        $stmt->bindValue(':user_id', $userModel->getId());
         $stmt->execute();
     }
 
-    public function detachColor($userId, $colorId)
+    public function detachColor($userModel, $colorModel)
     {
         $sql = 'DELETE FROM user_colors WHERE user_id = :user_id AND color_id = :color_id';
         $stmt = $this->dbConnection->prepare($sql);
-        $stmt->bindValue(':color_id', $colorId);
-        $stmt->bindValue(':user_id', $userId);
+        $stmt->bindValue(':color_id', $colorModel->getId());
+        $stmt->bindValue(':user_id', $userModel->getId());
         $stmt->execute();
     }
 }

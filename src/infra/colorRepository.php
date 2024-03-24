@@ -1,6 +1,7 @@
 <?php
 
 require_once dirname(__DIR__) .'/../connection.php';
+require_once dirname(__DIR__) . '/models/color.php';
 
 class ColorRepository {
 
@@ -17,7 +18,8 @@ class ColorRepository {
         $stmt = $this->dbConnection->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
-        
-        return $stmt->fetchObject();
+        $r = $stmt->fetchObject();
+
+        return new ColorModel($r->id, $r->name);
     }
 }

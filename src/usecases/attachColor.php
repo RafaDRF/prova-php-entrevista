@@ -16,7 +16,7 @@ class AttachColor {
             return false;
         }
 
-        $userRepository->attachColor($user->id, $colorToAttach->id);
+        $userRepository->attachColor($user, $colorToAttach);
         return true;
     }
 }
