@@ -72,4 +72,13 @@ class UserRepository {
         $stmt->bindValue(':user_id', $userId);
         $stmt->execute();
     }
+
+    public function detachColor($userId, $colorId)
+    {
+        $sql = 'DELETE FROM user_colors WHERE user_id = :user_id AND color_id = :color_id';
+        $stmt = $this->dbConnection->prepare($sql);
+        $stmt->bindValue(':color_id', $colorId);
+        $stmt->bindValue(':user_id', $userId);
+        $stmt->execute();
+    }
 }
