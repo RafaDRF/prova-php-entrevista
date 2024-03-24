@@ -58,3 +58,24 @@ echo '<form action="src/usecases/createUser.php" method="POST">
             <button type="submit" name="create">Cadastrar</button>
         </div>
 </form>';
+
+echo '<form action="src/usecases/updateUser.php" method="POST">
+        <div>
+            <div>
+                <label>ID</label>
+                <input type="text" name="id" value="" autofocus required />
+            </div>
+            <div>
+                <label>Nome</label>
+                <input type="text" name="nome" value="" autofocus required />
+            </div>
+            <div >
+                <label>Email</label>
+                <input type="text" name="email" value="" required />
+            </div>
+        </div>
+        <div>
+            <br>
+            <button type="submit" name="create">Atualizar</button>
+        </div>
+</form>';
