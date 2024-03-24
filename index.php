@@ -34,13 +34,13 @@ foreach($users as $user) {
                            </form>
                       </td>
                    </tr>',
-        $user->id, $user->name, $user->email,$user->id);
+        $user->getId(), $user->getName(), $user->getEmail(),$user->getId());
 
 }
 
 echo "</table>";
 
-echo  sprintf("$uniqueUser->id, $uniqueUser->name, $uniqueUser->email)");
+echo  sprintf("[%s, %s, %s]",$uniqueUser->getId(), $uniqueUser->getName(), $uniqueUser->getEmail());
 
 echo '<form action="src/usecases/createUser.php" method="POST">
         <div>
@@ -77,5 +77,23 @@ echo '<form action="src/usecases/updateUser.php" method="POST">
         <div>
             <br>
             <button type="submit" name="create">Atualizar</button>
+        </div>
+</form>';
+
+
+echo '<form action="src/usecases/attachColor.php" method="POST">
+        <div>
+            <div>
+                <label>userId</label>
+                <input type="number" name="userId" value="" autofocus required />
+            </div>
+            <div>
+                <label>colorId</label>
+                <input type="number" name="colorId" value="" autofocus required />
+            </div>
+        </div>
+        <div>
+            <br>
+            <button type="submit" name="attachcolor">Atualizar</button>
         </div>
 </form>';

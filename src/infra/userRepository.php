@@ -1,6 +1,7 @@
 <?php
 
 require_once dirname(__DIR__) .'/../connection.php';
+require_once dirname(__DIR__) . '/models/user.php';
 
 class UserRepository {
 
@@ -13,7 +14,16 @@ class UserRepository {
 
     public function getAllUsers()
     {
-        return $this->dbConnection->query("SELECT * FROM users");
+        $records = $this->dbConnection->query("SELECT * FROM users");    
+
+        $usersModels = [];
+
+        foreach($records as $r) {
+            $m = new UserModel($r->id, $r->name, $r->email);
+            array_push($usersModels, $m);
+        }
+
+        return $usersModels;
     }
 
     public function getUserById($id)
@@ -22,8 +32,9 @@ class UserRepository {
         $stmt = $this->dbConnection->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
-        
-        return $stmt->fetchObject();
+        $r = $stmt->fetchObject();
+
+        return new UserModel($r->id, $r->name, $r->email);
     }
 
     public function deleteUserById($id){
