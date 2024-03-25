@@ -23,10 +23,10 @@ class UpdateUser {
 
 $d = filter_input_array(INPUT_POST);
 
-if(isset($_POST['create'])){
+if(isset($_POST['update'])){
 
     $updateUser = new UpdateUser;
-    $updateUser->run($d['id'], $d['nome'], $d['email']);
+    $updateUser->run($d['id'], $d['name'], $d['email']);
     
     header("Location: ../../index.php");
 }

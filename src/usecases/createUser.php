@@ -18,7 +18,7 @@ $d = filter_input_array(INPUT_POST);
 if(isset($_POST['create'])){
 
     $createUser = new CreateUser;
-    $createUser->run($d['nome'], $d['email']);
+    $createUser->run($d['name'], $d['email']);
     
     header("Location: ../../index.php");
 }

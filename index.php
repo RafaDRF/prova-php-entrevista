@@ -1,99 +1,79 @@
 <?php
-
-include_once "src/usecases/getAllUsers.php";
-include_once "src/usecases/getUser.php";
+require_once "src/usecases/getAllUsers.php";
 
 $getAllUsers = new GetAllUsers;
-$getUser = new GetUserById;
-
 $users = $getAllUsers->run();
-$uniqueUser = $getUser->run(1);
+?>
 
-echo "<table border='1'>
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <tr>
-        <th>ID</th>    
-        <th>Nome</th>    
-        <th>Email</th>
-        <th>Ação</th>    
-    </tr>
-";
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-foreach($users as $user) {
+        <title>CRUD de Usuário</title>
+    </head>
+    <body>
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Usuários Cadastrados
+                                <a href="src/pages/user-create.php" class="btn btn-primary float-end">Cadastrar Usuário</a>
+                            </h4>
+                        </div>
+                        <div class="card-body">
+                            <?php 
+                                if(count($users) > 0)
+                                {
+                            ?>
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nome</th>
+                                        <th>Email</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php 
+                                        foreach($users as $user)
+                                        {
+                                    ?>
+                                            <tr>
+                                                <td><?= $user->getId(); ?></td>
+                                                <td><?= $user->getName(); ?></td>
+                                                <td><?= $user->getEmail(); ?></td>
+                                                <td>
+                                                    <a href="src/pages/user-colors-view.php?id=<?= $user->getId(); ?>" class="btn btn-info btn-sm">Gerenciar Cores</a>
+                                                    <a href="src/pages/user-edit.php?id=<?= $user->getId(); ?>" class="btn btn-success btn-sm">Edit</a>
+                                                    <form action="src/usecases/deleteUser.php" method="POST" class="d-inline">
+                                                        <button type="submit" name="id" value="<?=$user->getId();?>" class="btn btn-danger btn-sm">Deletar</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                            <?php
+                                        }
+                                }
+                                else
+                                {
+                                    echo '<h5 class="d-flex justify-content-center" > Nenhum usuário cadastrado </h5>';
+                                }
+                            ?>
+                                    
+                                </tbody>
+                            </table>
 
-    echo sprintf('<tr>
-                      <td>%s</td>
-                      <td>%s</td>
-                      <td>%s</td>
-                      <td>
-                           <a href="/edit">Editar</a>
-    
-                           <form action="src/usecases/deleteUser.php" method="POST">
-                                <input type="hidden" name="id" value="%s" required/>
-                                <button type="submit">Excluir</button>
-                           </form>
-                      </td>
-                   </tr>',
-        $user->getId(), $user->getName(), $user->getEmail(),$user->getId());
-
-}
-
-echo "</table>";
-
-echo  sprintf("[%s, %s, %s]",$uniqueUser->getId(), $uniqueUser->getName(), $uniqueUser->getEmail());
-
-echo '<form action="src/usecases/createUser.php" method="POST">
-        <div>
-            <div>
-                <label>Nome</label>
-                <input type="text" name="nome" value="" autofocus required />
-            </div>
-            <div >
-                <label>Email</label>
-                <input type="text" name="email" value="" required />
-            </div>
-        </div>
-        <div>
-            <br>
-            <button type="submit" name="create">Cadastrar</button>
-        </div>
-</form>';
-
-echo '<form action="src/usecases/updateUser.php" method="POST">
-        <div>
-            <div>
-                <label>ID</label>
-                <input type="text" name="id" value="" autofocus required />
-            </div>
-            <div>
-                <label>Nome</label>
-                <input type="text" name="nome" value="" autofocus required />
-            </div>
-            <div >
-                <label>Email</label>
-                <input type="text" name="email" value="" required />
-            </div>
-        </div>
-        <div>
-            <br>
-            <button type="submit" name="create">Atualizar</button>
-        </div>
-</form>';
-
-
-echo '<form action="src/usecases/attachColor.php" method="POST">
-        <div>
-            <div>
-                <label>userId</label>
-                <input type="number" name="userId" value="" autofocus required />
-            </div>
-            <div>
-                <label>colorId</label>
-                <input type="number" name="colorId" value="" autofocus required />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div>
-            <br>
-            <button type="submit" name="attachcolor">Atualizar</button>
-        </div>
-</form>';
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    </body>
+</html>
