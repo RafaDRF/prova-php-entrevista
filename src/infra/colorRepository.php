@@ -22,4 +22,18 @@ class ColorRepository {
 
         return new ColorModel($r->id, $r->name);
     }
+
+    public function getAllColors()
+    {
+        $records = $this->dbConnection->query("SELECT * FROM colors");    
+
+        $colorsModels = [];
+
+        foreach($records as $r) {
+            $m = new ColorModel($r->id, $r->name);
+            array_push($colorsModels, $m);
+        }
+
+        return $colorsModels;
+    }
 }

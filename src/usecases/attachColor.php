@@ -28,5 +28,5 @@ if(isset($_POST['attachcolor'])){
     $createUser = new AttachColor;
     $createUser->run($d['userId'], $d['colorId']);
     
-    header("Location: ../../index.php");
+    header('Location: ../pages/user-colors-view.php?id='.$d["userId"]);
 }

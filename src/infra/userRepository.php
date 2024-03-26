@@ -2,6 +2,8 @@
 
 require_once dirname(__DIR__) .'/../connection.php';
 require_once dirname(__DIR__) . '/models/user.php';
+require_once dirname(__DIR__) . '/models/color.php';
+require_once dirname(__DIR__) . '/infra/colorRepository.php';
 
 class UserRepository {
 
@@ -20,6 +22,8 @@ class UserRepository {
 
         foreach($records as $r) {
             $m = new UserModel($r->id, $r->name, $r->email);
+            
+            $m->setColors($this->getUserColors($m));
             array_push($usersModels, $m);
         }
 
@@ -55,7 +59,7 @@ class UserRepository {
         $stmt->execute();
 
         return $this->dbConnection->lastInsertId();
-    } // https://www.sqlitetutorial.net/sqlite-php/insert/
+    }
 
     public function updateUser($userModel)
     {
@@ -72,7 +76,20 @@ class UserRepository {
 
     public function getUserColors($userModel)
     {
-         return true;
+        $sql = 'SELECT * FROM user_colors WHERE user_id = :id';
+        $stmt = $this->dbConnection->prepare($sql);
+        $stmt->bindParam(':id', $userModel->getId());
+        $stmt->execute();
+        $colors_records = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+        $colorRepository = new ColorRepository;
+        $colorsModels = [];
+
+        foreach($colors_records as $r) {
+            array_push($colorsModels, $colorRepository->getColorById($r->id));
+        }
+
+        return $colorsModels;
     }
 
     public function attachColor($userModel, $colorModel)

@@ -32,8 +32,8 @@ class UserModel {
         return $this->colors;
     }
 
-    public function attachColor($colorModel){
-        array_push($this->colors, $colorModel);
+    public function setColors($colors){
+        $this->colors = $colors;
     }
 
     private function validateName($name){

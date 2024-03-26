@@ -36,6 +36,7 @@ $users = $getAllUsers->run();
                                         <th>ID</th>
                                         <th>Nome</th>
                                         <th>Email</th>
+                                        <th>Cores</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,8 +48,18 @@ $users = $getAllUsers->run();
                                                 <td><?= $user->getId(); ?></td>
                                                 <td><?= $user->getName(); ?></td>
                                                 <td><?= $user->getEmail(); ?></td>
+                                                <td> 
+                                                    <?php 
+                                                    foreach($user->getColors() as $color)
+                                                        {
+                                                    ?>
+                                                        <ul><?=$color->getName();?></ul> 
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                </td>
                                                 <td>
-                                                    <a href="src/pages/user-colors-view.php?id=<?= $user->getId(); ?>" class="btn btn-info btn-sm">Gerenciar Cores</a>
+                                                    <a href="src/pages/user-colors-view.php?id=<?= $user->getId(); ?>&name=<?= $user->getName(); ?>" class="btn btn-info btn-sm">Gerenciar Cores</a>
                                                     <a href="src/pages/user-edit.php?id=<?= $user->getId(); ?>" class="btn btn-success btn-sm">Edit</a>
                                                     <form action="src/usecases/deleteUser.php" method="POST" class="d-inline">
                                                         <button type="submit" name="id" value="<?=$user->getId();?>" class="btn btn-danger btn-sm">Deletar</button>

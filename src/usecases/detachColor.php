@@ -20,3 +20,13 @@ class DetachColor {
         return true;
     }
 }
+
+$d = filter_input_array(INPUT_POST);
+
+if(isset($_POST['detachcolor'])){
+
+    $createUser = new DetachColor;
+    $createUser->run($d['userId'], $d['colorId']);
+    
+    header('Location: ../pages/user-colors-view.php?id='.$d["userId"]);
+}
