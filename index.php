@@ -37,6 +37,7 @@ $users = $getAllUsers->run();
                                         <th>Nome</th>
                                         <th>Email</th>
                                         <th>Cores</th>
+                                        <th>Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>

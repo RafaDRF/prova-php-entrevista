@@ -40,6 +40,7 @@ $userColors = $user->getColors();
                                 <tr>
                                     <th>Nome</th>
                                     <th>Status</th>
+                                    <th>Ação</th>
                                 </tr>
                             </thead>
                             <tbody>
