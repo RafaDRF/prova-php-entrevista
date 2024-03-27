@@ -47,6 +47,11 @@ class UserRepository {
         $stmt->bindValue(':id', $userModel->getId());
         $stmt->execute();
 
+        $sql = 'DELETE FROM user_colors WHERE user_id = :id';
+        $stmt = $this->dbConnection->prepare($sql);
+        $stmt->bindValue(':id', $userModel->getId());
+        $stmt->execute();
+
         return true;
     }
 
