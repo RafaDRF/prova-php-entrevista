@@ -20,7 +20,7 @@
                         </h4>
                     </div>
                     <div class="card-body">
-                        <form action="../usecases/createUser.php" method="POST">
+                        <form action="../controller/user-controller.php" method="POST">
 
                             <div class="mb-3">
                                 <label>Nome</label>
@@ -32,7 +32,7 @@
                             </div>
         
                             <div class="mb-3">
-                                <button type="submit" name="create" class="btn btn-primary">Salvar</button>
+                                <button type="submit" name="create-user" class="btn btn-primary">Salvar</button>
                             </div>
 
                         </form>

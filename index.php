@@ -62,8 +62,9 @@ $users = $getAllUsers->run();
                                                 <td>
                                                     <a href="src/pages/user-colors-view.php?id=<?= $user->getId(); ?>&name=<?= $user->getName(); ?>" class="btn btn-info btn-sm">Gerenciar Cores</a>
                                                     <a href="src/pages/user-edit.php?id=<?= $user->getId(); ?>" class="btn btn-success btn-sm">Edit</a>
-                                                    <form action="src/usecases/deleteUser.php" method="POST" class="d-inline">
-                                                        <button type="submit" name="id" value="<?=$user->getId();?>" class="btn btn-danger btn-sm">Deletar</button>
+                                                    <form action="src/controller/user-controller.php" method="POST" class="d-inline">
+                                                        <input type="hidden" name="id" value="<?= $user->getId();?>">
+                                                        <button type="submit" name="delete-user" class="btn btn-danger btn-sm">Deletar</button>
                                                     </form>
                                                 </td>
                                             </tr>

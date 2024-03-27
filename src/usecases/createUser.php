@@ -12,13 +12,3 @@ class CreateUser {
         return $userRepository->createUser($userModel);
     }
 }
-
-$d = filter_input_array(INPUT_POST);
-
-if(isset($_POST['create'])){
-
-    $createUser = new CreateUser;
-    $createUser->run($d['name'], $d['email']);
-    
-    header("Location: ../../index.php");
-}

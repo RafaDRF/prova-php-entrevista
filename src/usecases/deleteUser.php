@@ -17,13 +17,3 @@ class DeleteUser {
         return true;
     }
 }
-
-$d = filter_input_array(INPUT_POST);
-
-if(isset($_POST['id'])){
-
-    $createUser = new DeleteUser;
-    $createUser->run($d['id']);
-    
-    header("Location: ../../index.php");
-}
