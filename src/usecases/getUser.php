@@ -13,6 +13,7 @@ class GetUserById {
             return false;
         }
 
+        $user->setColors($userRepository->getUserColors($user));
         return $user;
     }
 }

@@ -36,6 +36,10 @@ class UserModel {
         $this->colors = $colors;
     }
 
+    public function hasColor($color){
+        return in_array($color, $this->colors);
+    }
+
     private function validateName($name){
 
     }

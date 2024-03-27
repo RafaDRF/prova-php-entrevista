@@ -78,15 +78,15 @@ class UserRepository {
     {
         $sql = 'SELECT * FROM user_colors WHERE user_id = :id';
         $stmt = $this->dbConnection->prepare($sql);
-        $stmt->bindParam(':id', $userModel->getId());
+        $stmt->bindValue(':id', $userModel->getId());
         $stmt->execute();
-        $colors_records = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $colors_ids = $stmt->fetchAll(PDO::FETCH_COLUMN, 1);
 
         $colorRepository = new ColorRepository;
         $colorsModels = [];
 
-        foreach($colors_records as $r) {
-            array_push($colorsModels, $colorRepository->getColorById($r->id));
+        foreach($colors_ids as $colorId) {
+            array_push($colorsModels, $colorRepository->getColorById($colorId));
         }
 
         return $colorsModels;
