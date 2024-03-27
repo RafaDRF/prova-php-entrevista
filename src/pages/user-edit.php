@@ -28,7 +28,7 @@ $user = $GetUserById->run($_GET['id']);
                         </h4>
                     </div>
                     <div class="card-body">
-                        <form action="../usecases/updateUser.php" method="POST">
+                        <form action="../controller/user-controller.php" method="POST">
                             <input type="hidden" name="id" value="<?= $user->getId() ?>">
 
                             <div class="mb-3">
@@ -41,7 +41,7 @@ $user = $GetUserById->run($_GET['id']);
                             </div>
         
                             <div class="mb-3">
-                                <button type="submit" name="update" class="btn btn-primary">Salvar</button>
+                                <button type="submit" name="update-user" class="btn btn-primary">Salvar</button>
                             </div>
                         </form>
                     </div>

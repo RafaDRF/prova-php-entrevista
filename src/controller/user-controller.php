@@ -4,6 +4,7 @@ require_once dirname(__DIR__) . '/usecases/attachColor.php';
 require_once dirname(__DIR__) . '/usecases/detachColor.php';
 require_once dirname(__DIR__) . '/usecases/createUser.php';
 require_once dirname(__DIR__) . '/usecases/deleteUser.php';
+require_once dirname(__DIR__) . '/usecases/updateUser.php';
 
 $d = filter_input_array(INPUT_POST);
 
@@ -32,6 +33,13 @@ if(isset($_POST['attachcolor'])){
 
     $action = new DeleteUser;
     $action->run($d['id']);
+    
+    header("Location: ../../index.php");
+
+} else if(isset($_POST['update-user'])){
+
+    $action = new UpdateUser;
+    $action->run($d['id'], $d['name'], $d['email']);
     
     header("Location: ../../index.php");
 }
