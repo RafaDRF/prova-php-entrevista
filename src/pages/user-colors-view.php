@@ -56,7 +56,7 @@ $userColors = $user->getColors();
                                         <?php
                                             if (!$isColorAttached) {
                                         ?>
-                                            <form action="../usecases/attachColor.php" method="POST" class="d-inline">
+                                            <form action="../controller/user-controller.php" method="POST" class="d-inline">
                                                 <input type="hidden" name="colorId" value="<?=$color->getId();?>"></input>
                                                 <input type="hidden" name="userId" value="<?=$user->getId();?>"></input>
                                                 <button type="submit" name="attachcolor" class="btn btn-success btn-sm">Vincular</button>
@@ -64,7 +64,7 @@ $userColors = $user->getColors();
                                         <?php
                                             } else {
                                         ?>
-                                            <form action="../usecases/detachColor.php" method="POST" class="d-inline">
+                                            <form action="../controller/user-controller.php" method="POST" class="d-inline">
                                                 <input type="hidden" name="colorId" value="<?=$color->getId();?>"></input>
                                                 <input type="hidden" name="userId" value="<?=$user->getId();?>"></input>
                                                 <button type="submit" name="detachcolor" class="btn btn-danger btn-sm">Desvincular</button>
