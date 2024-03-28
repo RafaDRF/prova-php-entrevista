@@ -7,7 +7,7 @@ CRUD desenvolvido em PHP sem a utilização de frameworks para teste de conhecim
 É possível Criar/Editar/Excluir/Listar usuários e também vincular/desvincular várias cores ao usuário.
 
 ### Configurar ambiente
-- Php instalado;
+- Php instalado (`8.1.2`);
 - Extensão do Sqlite para o Php.
 
 ### Rodar aplicação
