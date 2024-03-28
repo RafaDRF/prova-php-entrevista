@@ -8,7 +8,13 @@ CRUD desenvolvido em PHP sem a utilização de frameworks para teste de conhecim
 
 ### Configurar ambiente
 - Php instalado (`8.1.2`);
+```
+apt install php
+```
 - Extensão do Sqlite para o Php.
+``` 
+apt install php-sqlite3
+```
 
 ### Rodar aplicação
 
